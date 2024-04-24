@@ -92,3 +92,5 @@ public class TeacherDao extends Dao {
 		return teacher;
 	}
 }
+
+// 新庄　テスト
