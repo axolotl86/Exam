@@ -69,7 +69,10 @@
 								</c:forEach>
 							</select>
 						</div>
-
+						<!-- 登録ボタン -->
+						<div>
+							<input class="w-25 btn btn-lg btn-primary" type="submit" name="end" value="登録して戻る"/>
+						</div>
 
 
 
