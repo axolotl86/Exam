@@ -19,7 +19,7 @@ public class StudentCreateExecuteAction extends Action {
 		String ent_year = "";
 		String no = "";
 		String name = "";
-		String 
+		String
 		TeacherDao teacherDao = new TeacherDao();
 		Teacher teacher = null;
 
@@ -62,7 +62,5 @@ public class StudentCreateExecuteAction extends Action {
 
 //		req.getRequestDispatcher(url).forward(req, res);
 	}
-
-}
 
 }
