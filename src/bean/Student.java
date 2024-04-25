@@ -3,86 +3,47 @@ package bean;
 import java.io.Serializable;
 
 public class Student implements Serializable {
-
-	/**
-	 * 学生番号:String
-	 */
 	private String no;
-
-	/**
-	 * 学生名:String
-	 */
 	private String name;
-
-	/**
-	 * 入学年度:int
-	 */
 	private int entYear;
-
-	/**
-	 * クラス番号:String
-	 */
 	private String classNum;
-
-	/**
-	 * 在学中フラグ:boolean
-	 */
 	private boolean isAttend;
-
-	/**
-	 * 学校コード:String
-	 */
 	private School school;
 
-	/**
-	 * ゲッター、セッター
-	 */
+	public void setNo(String no) {
+		this.no = no;
+	}
 	public String getNo() {
 		return no;
 	}
-
-	public void setNo(String no){
-		this.no = no;
+	public void setname(String name) {
+		this.name = name;
 	}
-
 	public String getName() {
 		return name;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getEntYear() {
-		return entYear;
-	}
-
 	public void setEntYear(int entYear) {
 		this.entYear = entYear;
 	}
-
-	public String getClassNum() {
-		return classNum;
+	public int getEntYear() {
+		return entYear;
 	}
-
 	public void setClassNum(String classNum) {
 		this.classNum = classNum;
 	}
-
-	public boolean IsAttend() {
-		return isAttend;
+	public String getClassNum() {
+		return classNum;
 	}
-
-	public void setAttend(boolean isAttend) {
+	public void setIsAttend(boolean isAttend) {
 		this.isAttend = isAttend;
 	}
-
-	public School getSchool() {
-		return school;
+	public boolean getIsAttend() {
+		return isAttend;
 	}
-
 	public void setSchool(School school) {
 		this.school = school;
 	}
-
+	public School getSchool() {
+		return school;
+	}
 }
