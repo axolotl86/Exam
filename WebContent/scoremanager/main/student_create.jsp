@@ -63,7 +63,6 @@
 						<div>
 							<label class="form-label" for="student-class-select">クラス</label>
 							<select class="form-select" id="student-class-select" name="class_num">
-							<% List<String> list= (List<String>)req.getAttribute("class_num_set"); %>
 								<c:forEach var="class" items="${list }">
 									<option value="${class }">${class }</option>
 								</c:forEach>
