@@ -213,7 +213,7 @@ public class SubjectDao extends Dao{
 			    // 学生が存在した場合
 			    // プリペアードステートメントにDELETE文をセット
 			    statement = connection
-			            .prepareStatement("delete SUBJECT where CD=? ");
+			            .prepareStatement("delete SUBJECT where SCHOOL_CD=? and CD=?");
 			    // プリペアードステートメントに値をバインド
 			    statement.setString(1, subject.getSchool().getCd());
 			    statement.setString(2, subject.getCd());
