@@ -1,9 +1,5 @@
 package bean;
-
-import java.io.Serializable;
-
-public class Subject implements Serializable {
-
+public class Subject {
 	private String cd;
 
 	private String name;
