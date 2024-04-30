@@ -18,7 +18,8 @@
 
 			<div class = "col-4">
 				<label class="form-label" for="subject-code-select">科目コード</label>
-				<input type="text" maxlength="3" name="code" value="${code}" required>
+				<input type="text" maxlength="3" name="code"
+				style="ime-mode: disabled" value="${code}" required>
 			</div>
 				<c:choose>
     				<c:when test="${errors[0]}">
