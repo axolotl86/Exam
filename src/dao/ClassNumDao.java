@@ -11,7 +11,7 @@ import bean.School;
 
 public class ClassNumDao extends Dao {
 
-	private String baseSql = "select DISTINCT CLASS_NUM from STUDENT where SCHOOL_CD=?";
+	private String baseSql = "select DISTINCT CLASS_NUM from CLASS_NUM where SCHOOL_CD=?";
 
 	public List<String> filter(School school) throws Exception{
 		// リストを初期化
