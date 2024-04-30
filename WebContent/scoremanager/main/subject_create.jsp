@@ -21,7 +21,7 @@
 				<input type="text" maxlength="3" name="code" value="${code}" required>
 			</div>
 				<c:choose>
-    				<c:when test="${errors[1]}">
+    				<c:when test="${errors[0]}">
 						<p style="color: yellow;">科目コードを入力して下さい</p>
     				</c:when>
     				<c:when test="${errors[2]}">
@@ -36,7 +36,7 @@
 				<label class="form-label" for="subject-name-select">科目名</label>
         			<input type="text" maxlength="20" name="name" value="${name}" required>
 			</div>
-				<c:if test="${errors[4]}">
+				<c:if test="${errors[1]}">
             		<p style="color: yellow;">科目名を入力して下さい</p>
         		</c:if>
 
@@ -45,7 +45,7 @@
 		</form>
 
 		<div class="my-2 text-end px-4">
-			<a href="StudentList.action">戻る</a>
+			<a href="SubjectList.action">戻る</a>
 		</div>
 
 
