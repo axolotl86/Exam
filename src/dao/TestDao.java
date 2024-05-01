@@ -62,7 +62,7 @@ public class TestDao extends Dao {
 				// リザルトセット
 				ResultSet rSetStudent = null;
 				// SQL文の条件
-				String conditionStudent = "where NO and SCHOOL_CD=?";
+				String conditionStudent = "where NO=? and SCHOOL_CD=?";
 				try {
 					// プリペアードステートメントにSQL文をセット
 					statement = connection.prepareStatement("select * from STUDENT " + conditionStudent);
@@ -139,11 +139,12 @@ public class TestDao extends Dao {
 	            statement = connection.prepareStatement(
 					"update TEST set POINT=? " + condition);
 			    // プリペアードステートメントに値をバインド
-			    statement.setString(1, test.getStudent().getNo());
-			    statement.setString(2,  test.getSubject().getCd());
-			    statement.setString(3, test.getSchool().getCd());
-			    statement.setInt(4, test.getNo());
-			    statement.setInt(5,  test.getPoint());
+	            statement.setInt(1,  test.getPoint());
+			    statement.setString(2, test.getStudent().getNo());
+			    statement.setString(3,  test.getSubject().getCd());
+			    statement.setString(4, test.getSchool().getCd());
+			    statement.setInt(5, test.getNo());
+
 			    // プリペアードステートメントを実行
 			    count += statement.executeUpdate();
 	        }
