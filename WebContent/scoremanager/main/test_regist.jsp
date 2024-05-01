@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/common/base.jsp" >
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import = "java.util.List" %>
 	<c:param name="title">
 		得点管理システム
 	</c:param>
@@ -14,7 +16,7 @@
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
 
 
-		<form action="TestRegistExcute.action" method="post">
+		<form action="TestRegist.action" method="post">
 			<div class="col-4">
 				<table>
 					<tr>
@@ -77,51 +79,38 @@
         		<button type="submit">検索</button>
 
 			</div>
+		</form>
 
-<%--
-			<div class = "col-4">
-				<label class="form-label" for="student-no-select">学生番号</label>
-				<input type="text" name="no" value="${no}">
-			</div>
-				<c:choose>
-    				<c:when test="${errors[1]}">
-						<p style="color: yellow;">学生番号を入力して下さい</p>
-    				</c:when>
-    				<c:when test="${errors[4]}">
-						<p style="color: yellow;">学生番号が重複しています</p>
-    				</c:when>
-				</c:choose>
-			<div class = "col-4">
-				<label class="form-label" for="student-name-select">氏名</label>
-        			<input type="text" name="name" value="<c:out value="${name}" />">
-			</div>
-				<c:if test="${errors[2]}">
-            		<p style="color: yellow;">氏名を入力して下さい</p>
-        		</c:if>
+		<form action="TestRegistExcute.action" method="post">
 			<div class="col-4">
-				<label class="form-label" for="student-class_num-select">クラス</label>
-				<select class="form-select " id="student-class_num-select" name="class_num">
-					<option value="${clss_num}">
-						<c:choose>
-    						<c:when test="${empty class_num}">
-								--------
-    						</c:when>
-    						<c:otherwise>
-								${class_num }
-    						</c:otherwise>
-						</c:choose>
-					</option>
-					<c:forEach var="num" items="${class_num_set}">
-						<option value="${num}">${num}</option>
+				<h2>科目："${class }"（"${count }"回）</h2>
+				<table>
+					<tr>
+						<th>入学年度</th>
+						<th>クラス</th>
+						<th>学生番号</th>
+						<th>氏名</th>
+						<th>点数</th>
+					</tr>
+					<c:forEach var="test" items="${test }">
+						<tr>
+							<td>"${ent_year }"</td>
+							<td>"${class }"</td>
+							<td>"${no }"</td>
+							<td>"${name }"</td>
+							<td>
+							<input type="text" name="point_${no }">
+							<div>
+								<c:if test="${errors[0]}">
+	            					<p style="color: yellow;">0～100の範囲で入力してください</p>
+	        					</c:if>
+							</div>
+							</td>
+						</tr>
 					</c:forEach>
-				</select>
+				</table>
+				<button type="submit">登録して終了</button>
 			</div>
-				<c:if test="${errors[3]}">
-            		<p style="color: yellow;">クラスを選択して下さい</p>
-        		</c:if>
-        	<br>
-
---%>
 		</form>
 
 		<div class="my-2 text-end px-4">
