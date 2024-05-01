@@ -36,7 +36,7 @@ public class TestDao extends Dao {
 		// リザルトセット
 		ResultSet rSetTest = null;
 		// SQL文の条件
-		String conditionTest = "where SUBJECT_CD=? and SCHOOL_CD=? and CLASS_NUM=?";
+		String conditionTest = "where SUBJECT_CD=? and SCHOOL_CD=? and NO=? and CLASS_NUM=?";
 		// SQL文のソート
 		String orderTest = " order by NO asc";
 
@@ -47,8 +47,9 @@ public class TestDao extends Dao {
 			statement.setString(1, subject.getCd());
 			// プリペアードステートメントに学校コードをバインド
 			statement.setString(2, school.getCd());
+			statement.setInt(3, num);
 			// プリペアードステートメントにクラス番号をバインド
-			statement.setString(3, classNum);
+			statement.setString(4, classNum);
 			// プライベートステートメントを実行
 			rSetTest = statement.executeQuery();
 
@@ -85,6 +86,7 @@ public class TestDao extends Dao {
 					test.setStudent(student);
 					test.setClassNum(classNum);
 					test.setSubject(subject);
+					test.setSchool(school);
 					test.setNo(num);
 					test.setPoint(rSetTest.getInt("point"));
 
