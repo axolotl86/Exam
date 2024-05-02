@@ -18,6 +18,56 @@ public class TestDao extends Dao {
 
 	public Test get(Student student, Subject subject, School school, int no) throws Exception {
 		Test test = new Test();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リザルトセット
+		ResultSet rSet = null;
+		// SQL文の条件
+		String condition = "where STUDENT_NO=? and SUBJECT_CD=? and SCHOOL_CD=? and NO=? and CLASS_NUM=?";
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from TEST " + condition);
+			// プリペアードステートメントに科目コードをバインド
+			statement.setString(1, student.getNo());
+			// プリペアードステートメントに学校コードをバインド
+			statement.setString(2, subject.getCd());
+			statement.setString(3, school.getCd());
+			statement.setInt(4, no);
+			// プリペアードステートメントにクラス番号をバインド
+			statement.setString(5, student.getClassNum());
+			// プライベートステートメントを実行
+			rSet = statement.executeQuery();
+
+			// リストへの格納処理を実行
+			test.setStudent(student);
+			test.setClassNum(rSet.getString("CLASS_NUM"));
+			test.setSubject(subject);
+			test.setSchool(school);
+			test.setNo(no);
+			test.setPoint(rSet.getInt("point"));
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
 		return test;
 	}
 
