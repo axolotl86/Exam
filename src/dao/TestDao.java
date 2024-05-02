@@ -62,7 +62,7 @@ public class TestDao extends Dao {
 				// リザルトセット
 				ResultSet rSetStudent = null;
 				// SQL文の条件
-				String conditionStudent = "where NO=? and SCHOOL_CD=?";
+				String conditionStudent = "where NO=?  and SCHOOL_CD=?";
 				try {
 					// プリペアードステートメントにSQL文をセット
 					statement = connection.prepareStatement("select * from STUDENT " + conditionStudent);

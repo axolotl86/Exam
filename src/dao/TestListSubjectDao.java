@@ -31,7 +31,7 @@ public class TestListSubjectDao extends Dao {
 		// SQL文の条件
 		String conditionTest = "where SUBJECT_CD=? and SCHOOL_CD=? and CLASS_NUM=?";
 		// SQL文のソート
-		String orderTest = " order by NO asc";
+		String orderTest = " order by STUDENT_CD asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
