@@ -29,10 +29,17 @@
 						<td>
 							<!-- 入学年度 -->
 							<select class="form-select " id="select" name="f1">
-								<option value=0>
-									--------
+								<option value="${year}">
+									<c:choose>
+			    						<c:when test="${empty year}">
+											--------
+			    						</c:when>
+			    						<c:otherwise>
+											${year}
+			    						</c:otherwise>
+									</c:choose>
 								</option>
-								<c:forEach var="year" items="${year}">
+								<c:forEach var="year" items="${year_set}">
 									<option value="${year}">${year}</option>
 								</c:forEach>
 							</select>
@@ -40,10 +47,17 @@
 						<td>
 							<!-- クラス番号 -->
 							<select class="form-select " id="select" name="f2">
-								<option value=0>
-									--------
+								<option value="${class_num}">
+									<c:choose>
+			    						<c:when test="${empty class_num}">
+											--------
+			    						</c:when>
+			    						<c:otherwise>
+											${class_num }
+			    						</c:otherwise>
+									</c:choose>
 								</option>
-								<c:forEach var="class_num" items="${class_num}">
+								<c:forEach var="class_num" items="${class_num_set}">
 									<option value="${class_num}">${class_num}</option>
 								</c:forEach>
 							</select>
@@ -51,10 +65,17 @@
 						<td>
 							<!-- 科目名 -->
 							<select class="form-select " id="select" name="f3">
-								<option value=0>
-									--------
+								<option value="${subject}">
+									<c:choose>
+			    						<c:when test="${empty subject}">
+											--------
+			    						</c:when>
+			    						<c:otherwise>
+											${subject }
+			    						</c:otherwise>
+									</c:choose>
 								</option>
-								<c:forEach var="subject" items="${subject}">
+								<c:forEach var="subject" items="${subject_set}">
 									<option value="${subject}">${subject}</option>
 								</c:forEach>
 							</select>
@@ -62,10 +83,17 @@
 						<td>
 							<!-- 回数 -->
 							<select class="form-select " id="select" name="f4">
-								<option value=0>
-									--------
+								<option value="${count}">
+									<c:choose>
+			    						<c:when test="${empty count}">
+											--------
+			    						</c:when>
+			    						<c:otherwise>
+											${count }
+			    						</c:otherwise>
+									</c:choose>
 								</option>
-								<c:forEach var="count" items="${count}">
+								<c:forEach var="count" items="${count_set}">
 									<option value="${count}">${count}</option>
 								</c:forEach>
 							</select>
@@ -83,7 +111,7 @@
 
 		<form action="TestRegistExcute.action" method="post">
 			<div class="col-4">
-				<h2>科目："${class }"（"${count }"回）</h2>
+				<h2>科目："${subject }"（"${count }"回）</h2>
 				<table>
 					<tr>
 						<th>入学年度</th>

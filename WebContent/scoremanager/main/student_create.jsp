@@ -58,7 +58,7 @@
 			<div class="col-4">
 				<label class="form-label" for="student-class_num-select">クラス</label>
 				<select class="form-select " id="student-class_num-select" name="class_num">
-					<option value="${clss_num}">
+					<option value="${class_num}">
 						<c:choose>
     						<c:when test="${empty class_num}">
 								--------
