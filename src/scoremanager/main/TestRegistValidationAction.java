@@ -25,7 +25,7 @@ public class TestRegistValidationAction extends Action {
 			Teacher teacher = (Teacher)session.getAttribute("user");
 
 			LocalDate todaysDate = LocalDate.now();//LocalDateインスタンスを取得
-			int years = todaysDate.getYear();//現在の年を取得
+			int year = todaysDate.getYear();//現在の年を取得
 			ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
 			SubjectDao subDao = new SubjectDao();//科目Dao
 			TestDao testDao = new TestDao();//科目Dao
@@ -34,7 +34,7 @@ public class TestRegistValidationAction extends Action {
 			// リストを初期化
 			List<Integer> entYearSet = new ArrayList<>();
 			// 10年前から1年後まで年をリストに追加
-			for (int i= years - 10; i < years + 1; i++) {
+			for (int i= year - 10; i < year + 1; i++) {
 				entYearSet.add(i);
 			}
 
@@ -57,21 +57,21 @@ public class TestRegistValidationAction extends Action {
 				subName.add(subList.get(i).getName());
 			}
 
-			String yearStr=request.getParameter("f1");
+			String entYearStr=request.getParameter("f1");
 			String classNum=request.getParameter("f2");
 			String subject=request.getParameter("f3");
 			String countStr=request.getParameter("f4");
 
 	        // バリデーションチェック
 			boolean error1 = false;
-	        if (yearStr == null || yearStr.isEmpty() || classNum == null || classNum.isEmpty() ||
+	        if (entYearStr == null || entYearStr.isEmpty() || classNum == null || classNum.isEmpty() ||
 	        	subject == null || subject.isEmpty() || countStr == null || countStr.isEmpty()) {
 
 	            error1=true;
 
 				//レスポンス値をセット
 				// リクエストに入学年度をセット
-				request.setAttribute("year_set", entYearSet);
+				request.setAttribute("ent_year_set", entYearSet);
 				// リクエストにクラス番号をセット
 				request.setAttribute("class_num_set", cNumList);
 				// リクエストに科目リストをセット
@@ -80,7 +80,7 @@ public class TestRegistValidationAction extends Action {
 				request.setAttribute("count_set", countSet);
 
 	            // 入力されたデータとエラーメッセージをリクエストにセット
-	        	request.setAttribute("year", yearStr);
+	        	request.setAttribute("ent_year", entYearStr);
 	            request.setAttribute("class_num", classNum);
 	            request.setAttribute("subject", subject);
 	    		request.setAttribute("count", countStr);
@@ -90,14 +90,14 @@ public class TestRegistValidationAction extends Action {
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("test_regist.jsp");
 	            dispatcher.forward(request, response);
 	        }else{
-	        	int year = Integer.parseInt(yearStr);
+	        	int entYear = Integer.parseInt(entYearStr);
 	        	int count = Integer.parseInt(countStr);
 
-	        	List<Test> testList = testDao.filter(year, classNum, subject, count, teacher.getSchool());
+	        	List<Test> testList = testDao.filter(entYear, classNum, subject, count, teacher.getSchool());
 
 				//レスポンス値をセット
 				// リクエストに入学年度をセット
-				request.setAttribute("year_set", entYearSet);
+				request.setAttribute("ent_year_set", entYearSet);
 				// リクエストにクラス番号をセット
 				request.setAttribute("class_num_set", cNumList);
 				// リクエストに科目リストをセット
@@ -106,7 +106,7 @@ public class TestRegistValidationAction extends Action {
 				request.setAttribute("count_set", countSet);
 
 	            // 入力されたデータと成績リストをリクエストにセット
-	        	request.setAttribute("year", yearStr);
+	        	request.setAttribute("ent_year", entYearStr);
 	            request.setAttribute("class_num", classNum);
 	            request.setAttribute("subject", subject);
 	    		request.setAttribute("count", countStr);

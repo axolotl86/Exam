@@ -29,18 +29,18 @@
 						<td>
 							<!-- 入学年度 -->
 							<select class="form-select " id="select" name="f1">
-								<option value="${year}">
+								<option value="${ent_year}">
 									<c:choose>
-			    						<c:when test="${empty year}">
+			    						<c:when test="${empty ent_year}">
 											--------
 			    						</c:when>
 			    						<c:otherwise>
-											${year}
+											${ent_year}
 			    						</c:otherwise>
 									</c:choose>
 								</option>
-								<c:forEach var="year" items="${year_set}">
-									<option value="${year}">${year}</option>
+								<c:forEach var="ent_year" items="${ent_year_set}">
+									<option value="${ent_year}">${ent_year}</option>
 								</c:forEach>
 							</select>
 						</td>
@@ -122,10 +122,10 @@
 					</tr>
 					<c:forEach var="test" items="${test }">
 						<tr>
-							<td>"${test.ent_year }"</td>
-							<td>"${test.class }"</td>
-							<td>"${test.no }"</td>
-							<td>"${test.name }"</td>
+							<td>"${test.ent_year }"	<input type="hidden" name="ent_year" value="${test.ent_year }"></td>
+							<td>"${test.class }" <input type="hidden" name="class" value="${test.class }"></td>
+							<td>"${test.no }" <input type="hidden" name="no" value="${test.no }"></td>
+							<td>"${test.name }" <input type="hidden" name="name" value="${test.name }"></td>
 							<td>
 							<input type="text" name="point_${no }">
 							<div>
