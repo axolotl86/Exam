@@ -57,7 +57,7 @@ public class TestRegistAction extends Action {
 			// リクエストに入学年度をセット
 			request.setAttribute("year", entYearSet);
 			// リクエストにクラス番号をセット
-			request.setAttribute("class", cNumList);
+			request.setAttribute("class_num", cNumList);
 			// リクエストに科目リストをセット
 			request.setAttribute("subject", subName);
 			// リクエストに回数をセット
@@ -65,7 +65,5 @@ public class TestRegistAction extends Action {
 
 			// jspへフォワード 7
 			request.getRequestDispatcher("test_regist.jsp").forward(request, response);
-
-
 		}
 }

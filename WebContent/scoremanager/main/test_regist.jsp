@@ -16,7 +16,7 @@
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
 
 
-		<form action="TestRegist.action" method="post">
+		<form action="TestRegistValidation.action" method="post">
 			<div class="col-4">
 				<table>
 					<tr>
@@ -43,8 +43,8 @@
 								<option value=0>
 									--------
 								</option>
-								<c:forEach var="num" items="${class}">
-									<option value="${num}">${num}</option>
+								<c:forEach var="class_num" items="${class_num}">
+									<option value="${class_num}">${class_num}</option>
 								</c:forEach>
 							</select>
 						</td>
@@ -65,14 +65,14 @@
 								<option value=0>
 									--------
 								</option>
-								<c:forEach var="subject" items="${count}">
+								<c:forEach var="count" items="${count}">
 									<option value="${count}">${count}</option>
 								</c:forEach>
 							</select>
 						</td>
 					</tr>
 				</table>
-				<c:if test="${errors[0]}">
+				<c:if test="${error}">
             		<p style="color: yellow;">入学年度とクラスと科目と回数を選択して下さい</p>
         		</c:if>
 
@@ -94,14 +94,14 @@
 					</tr>
 					<c:forEach var="test" items="${test }">
 						<tr>
-							<td>"${ent_year }"</td>
-							<td>"${class }"</td>
-							<td>"${no }"</td>
-							<td>"${name }"</td>
+							<td>"${test.ent_year }"</td>
+							<td>"${test.class }"</td>
+							<td>"${test.no }"</td>
+							<td>"${test.name }"</td>
 							<td>
 							<input type="text" name="point_${no }">
 							<div>
-								<c:if test="${errors[0]}">
+								<c:if test="${errors[1]}">
 	            					<p style="color: yellow;">0～100の範囲で入力してください</p>
 	        					</c:if>
 							</div>
