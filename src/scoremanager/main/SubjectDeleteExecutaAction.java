@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
@@ -20,8 +21,10 @@ public class SubjectDeleteExecutaAction extends Action {
 
 		SubjectDao subjectDao = new SubjectDao();
 
+		School school = teacher.getSchool();
 		Subject subject = new Subject();
 		subject.setCd(cd);
+		subject.setSchool(school);
 
 		boolean isDeleted = subjectDao.delete(subject);
 

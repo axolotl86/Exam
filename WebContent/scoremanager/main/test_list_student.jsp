@@ -13,7 +13,7 @@
 		<section class="me-4">
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績一覧（学生）</h2>
 		<div class="my-2 text-end px-4">
-			<a href="SubjectCreate.action">新規登録</a>
+
 		</div>
 
 

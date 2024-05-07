@@ -27,6 +27,7 @@ public class SubjectDeleteAction extends Action {
 
 
 		Subject subject = sDao.get(cd, school);
+		System.out.println(cd);
 
 
 		request.setAttribute("subject", subject);
