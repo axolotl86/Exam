@@ -15,7 +15,7 @@
 		<div class="my-2 text-end px-4">
 
 		</div>
-		<form action="TestListSbject.action" method="post">
+		<form action="TestListSbjectExcute.action" method="post">
 			<div class="row vorder mx-3 mb-3 py-2 align-items-center rounded" id="filter">
 				<div class="col-4">
 					<label class="form-label" for="student-f1-select">入学年度</label>
