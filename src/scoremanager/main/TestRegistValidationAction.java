@@ -28,7 +28,7 @@ public class TestRegistValidationAction extends Action {
 			int year = todaysDate.getYear();//現在の年を取得
 			ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
 			SubjectDao subDao = new SubjectDao();//科目Dao
-			TestDao testDao = new TestDao();//科目Dao
+			TestDao testDao = new TestDao();//成績Dao
 
 			//入学年度リスト
 			// リストを初期化

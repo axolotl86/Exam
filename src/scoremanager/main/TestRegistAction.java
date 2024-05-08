@@ -47,11 +47,11 @@ public class TestRegistAction extends Action {
 			List<String> cNumList = cNumDao.filter(teacher.getSchool());
 			// ログインユーザーの学校コードをもとに科目一覧を取得
 			List<Subject> subList = subDao.filter(teacher.getSchool());
-			//科目名リスト
-			List<String> subName = new ArrayList<>();
-			for(int i = 0; i < subList.size(); i++){
-				subName.add(subList.get(i).getName());
-			}
+//			//科目名リスト
+//			List<String> subName = new ArrayList<>();
+//			for(int i = 0; i < subList.size(); i++){
+//				subName.add(subList.get(i).getName());
+//			}
 
 			//レスポンス値をセット 6
 			// リクエストに入学年度をセット
@@ -59,7 +59,7 @@ public class TestRegistAction extends Action {
 			// リクエストにクラス番号をセット
 			request.setAttribute("class_num_set", cNumList);
 			// リクエストに科目リストをセット
-			request.setAttribute("subject_set", subName);
+			request.setAttribute("subject_set", subList);
 			// リクエストに回数をセット
 			request.setAttribute("count_set", countSet);
 

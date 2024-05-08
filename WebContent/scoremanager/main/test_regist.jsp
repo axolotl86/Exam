@@ -75,7 +75,7 @@
 			    						</c:otherwise>
 									</c:choose>
 								</option>
-								<c:forEach var="subject" items="${subject_set}">
+								<c:forEach var="subject" items="${subject_set.getName}">
 									<option value="${subject}">${subject}</option>
 								</c:forEach>
 							</select>
@@ -123,13 +123,13 @@
 					<c:forEach var="test" items="${test }">
 						<tr>
 							<td>"${test.ent_year }"	<input type="hidden" name="ent_year" value="${test.ent_year }"></td>
-							<td>"${test.class }" <input type="hidden" name="class" value="${test.class }"></td>
+							<td>"${test.class }" <input type="hidden" name="class_num" value="${test.class }"></td>
 							<td>"${test.no }" <input type="hidden" name="no" value="${test.no }"></td>
 							<td>"${test.name }" <input type="hidden" name="name" value="${test.name }"></td>
 							<td>
-							<input type="text" name="point_${no }">
+							<input type="text" name="point_${no }" value="${point }">
 							<div>
-								<c:if test="${errors[1]}">
+								<c:if test="${error2}">
 	            					<p style="color: yellow;">0～100の範囲で入力してください</p>
 	        					</c:if>
 							</div>
