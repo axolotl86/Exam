@@ -207,18 +207,12 @@ public class SubjectDao extends Dao{
 
 
 		try {
-			// データベースから学生を取得
-			Subject old = get(subject.getCd(), subject.getSchool());
-			if(old != null){
-			    // 学生が存在した場合
-			    // プリペアードステートメントにDELETE文をセット
-			    statement = connection
-			            .prepareStatement("delete SUBJECT where SCHOOL_CD=? and CD=?");
+			// プリペアードステートメントにDELETE文をセット
+			statement = connection
+			            .prepareStatement("delete SUBJECT where CD=? and SCHOOL_CD=?");
 			    // プリペアードステートメントに値をバインド
-			    statement.setString(1, subject.getSchool().getCd());
-			    statement.setString(2, subject.getCd());
-			    statement.setString(3, subject.getName());
-			}
+			    statement.setString(1, subject.getCd());
+			    statement.setString(2, subject.getSchool().getCd());
 
 			// プリペアードステートメントを実行
 			count = statement.executeUpdate();

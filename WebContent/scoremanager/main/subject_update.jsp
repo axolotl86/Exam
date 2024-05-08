@@ -15,19 +15,19 @@
 		<form action="SubjectUpdateExcute.action" method="post">
 				<div class="col-4">
 					<label class="form-label" for="subject-cd">科目コード</label>
-					<input type="hidden" id="subject-cd-select" name="cd" value="${subject.cd }">
-					<p>${subject.cd }</p>
+					<input type="hidden" id="subject-cd-select" name="cd" value="${cd }">
+					<p>${cd }</p>
 				</div>
 		<div class = "col-4">
 			<label class="form-label" for="subject-name-select">科目名</label>
-			<input type="text" name="name" value="${subject.name }">
+			<input type="text" name="name" value="${name }">
 		</div>
-		<button type="submit" name="end">変更して終了</button>
+		<button type="submit" name="end" value=40>変更</button>
 
 		</form>
 
 		<div class="my-2 text-end px-4">
-			<a href="StudentList.action">戻る</a>
+			<a href="SubjectList.action">戻る</a>
 		</div>
 
 
