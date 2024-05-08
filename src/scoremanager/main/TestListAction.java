@@ -48,7 +48,7 @@ public class TestListAction extends Action {
 		request.setAttribute("subject", sCdSet);
 		request.setAttribute("no", tNoSet);
 
-		request.getRequestDispatcher("subject_list.jsp").forward(request, response);
+		request.getRequestDispatcher("test_list.jsp").forward(request, response);
 
 	}
 }

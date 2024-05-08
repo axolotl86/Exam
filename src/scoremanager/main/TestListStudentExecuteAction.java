@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
 import bean.Test;
-import dao.TestDao;
+import dao.TestNoDao;
 import tool.Action;
 
 public class TestListStudentExecuteAction extends Action {
