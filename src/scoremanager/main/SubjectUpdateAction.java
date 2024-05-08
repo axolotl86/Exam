@@ -19,6 +19,7 @@ public class SubjectUpdateAction extends Action {
         Subject subject = new Subject();
         request.setAttribute("cd", cd);
 		request.setAttribute("name", name);
+		System.out.println(name);
 
 
         SubjectDao subjectDao = new SubjectDao();

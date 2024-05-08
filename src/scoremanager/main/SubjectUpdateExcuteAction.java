@@ -1,19 +1,14 @@
 package scoremanager.main;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.School;
-import bean.Student;
+import bean.Subject;
 import bean.Teacher;
-import dao.ClassNumDao;
-import dao.StudentDao;
+import dao.SubjectDao;
 import tool.Action;
 
 public class SubjectUpdateExcuteAction extends Action {
@@ -24,7 +19,7 @@ public class SubjectUpdateExcuteAction extends Action {
 		HttpSession session = request.getSession();//セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");
 
-		// student_create.jspからデータを受け取る
+		//データを受け取る
 		String cd=request.getParameter("cd");
 		String name=request.getParameter("name");
 		boolean is_attend = false;
@@ -44,9 +39,20 @@ public class SubjectUpdateExcuteAction extends Action {
 		            RequestDispatcher dispatcher = request.getRequestDispatcher("subject_update.jsp");
 		            dispatcher.forward(request, response);
 		        }else{
+		        	boolean count = false;
+		        	School school = new School();
+		    		school = teacher.getSchool();
 
+		    		SubjectDao sDao = new SubjectDao();
 
-						if(){
+		    		// 学生インスタンスを初期化
+		    		Subject subject = new Subject();
+		    		// 学生インスタンスに検索結果をセット
+		    		subject.setCd(cd);
+		    		subject.setName(name);
+		    		// DB更新があった場合、countにはtrueが入る
+		    		count = sDao.save(subject);
+						if(count){
 							// DB更新が完了した場合
 							request.getRequestDispatcher("subject_update_done.jsp").forward(request, response);
 						}else{

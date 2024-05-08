@@ -18,6 +18,56 @@ public class TestDao extends Dao {
 
 	public Test get(Student student, Subject subject, School school, int no) throws Exception {
 		Test test = new Test();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リザルトセット
+		ResultSet rSet = null;
+		// SQL文の条件
+		String condition = "where STUDENT_NO=? and SUBJECT_CD=? and SCHOOL_CD=? and NO=? and CLASS_NUM=?";
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from TEST " + condition);
+			// プリペアードステートメントに科目コードをバインド
+			statement.setString(1, student.getNo());
+			// プリペアードステートメントに学校コードをバインド
+			statement.setString(2, subject.getCd());
+			statement.setString(3, school.getCd());
+			statement.setInt(4, no);
+			// プリペアードステートメントにクラス番号をバインド
+			statement.setString(5, student.getClassNum());
+			// プライベートステートメントを実行
+			rSet = statement.executeQuery();
+
+			// リストへの格納処理を実行
+			test.setStudent(student);
+			test.setClassNum(rSet.getString("CLASS_NUM"));
+			test.setSubject(subject);
+			test.setSchool(school);
+			test.setNo(no);
+			test.setPoint(rSet.getInt("point"));
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
 		return test;
 	}
 
@@ -36,7 +86,7 @@ public class TestDao extends Dao {
 		// リザルトセット
 		ResultSet rSetTest = null;
 		// SQL文の条件
-		String conditionTest = "where SUBJECT_CD=? and SCHOOL_CD=? and CLASS_NUM=?";
+		String conditionTest = "where SUBJECT_CD=? and SCHOOL_CD=? and NO=? and CLASS_NUM=?";
 		// SQL文のソート
 		String orderTest = " order by NO asc";
 
@@ -47,8 +97,9 @@ public class TestDao extends Dao {
 			statement.setString(1, subject.getCd());
 			// プリペアードステートメントに学校コードをバインド
 			statement.setString(2, school.getCd());
+			statement.setInt(3, num);
 			// プリペアードステートメントにクラス番号をバインド
-			statement.setString(3, classNum);
+			statement.setString(4, classNum);
 			// プライベートステートメントを実行
 			rSetTest = statement.executeQuery();
 
@@ -61,7 +112,7 @@ public class TestDao extends Dao {
 				// リザルトセット
 				ResultSet rSetStudent = null;
 				// SQL文の条件
-				String conditionStudent = "where NO and SCHOOL_CD=?";
+				String conditionStudent = "where NO=?  and SCHOOL_CD=?";
 				try {
 					// プリペアードステートメントにSQL文をセット
 					statement = connection.prepareStatement("select * from STUDENT " + conditionStudent);
@@ -85,6 +136,7 @@ public class TestDao extends Dao {
 					test.setStudent(student);
 					test.setClassNum(classNum);
 					test.setSubject(subject);
+					test.setSchool(school);
 					test.setNo(num);
 					test.setPoint(rSetTest.getInt("point"));
 
@@ -137,11 +189,12 @@ public class TestDao extends Dao {
 	            statement = connection.prepareStatement(
 					"update TEST set POINT=? " + condition);
 			    // プリペアードステートメントに値をバインド
-			    statement.setString(1, test.getStudent().getNo());
-			    statement.setString(2,  test.getSubject().getCd());
-			    statement.setString(3, test.getSchool().getCd());
-			    statement.setInt(4, test.getNo());
-			    statement.setInt(5,  test.getPoint());
+	            statement.setInt(1,  test.getPoint());
+			    statement.setString(2, test.getStudent().getNo());
+			    statement.setString(3,  test.getSubject().getCd());
+			    statement.setString(4, test.getSchool().getCd());
+			    statement.setInt(5, test.getNo());
+
 			    // プリペアードステートメントを実行
 			    count += statement.executeUpdate();
 	        }
