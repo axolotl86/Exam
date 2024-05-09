@@ -10,7 +10,7 @@ import bean.Student;
 import bean.TestListStudent;
 
 public class TestListStudentDao extends Dao {
-	private String basesql = "SELECT SUBJECT_CD, s.NAME, NO, POINT from TEST as t left join SUBJECT as s on t.SUBJECT_CD = s.CD";
+	private String basesql = "SELECT SUBJECT_CD, s.NAME, NO, POINT from TEST as t left join SUBJECT as s on t.SUBJECT_CD = s.CD ";
 
 	private List<TestListStudent> postFilter(ResultSet rSet) throws Exception {
 		// リストを初期化
@@ -40,7 +40,7 @@ public class TestListStudentDao extends Dao {
 		// リザルトセット
 		ResultSet rSet = null;
 		// SQL文の条件
-		String condition = "where t.STUDENT_NO=? and t.SCHOO_CD=?";
+		String condition = "where t.STUDENT_NO=?";
 		// SQL文のソート
 		String order = " order by SUBJECT_CD asc";
 
@@ -49,7 +49,6 @@ public class TestListStudentDao extends Dao {
 			statement = connection.prepareStatement(basesql + condition + order);
 			// プリペアードステートメントに学生コードをバインド
 			statement.setString(1, student.getNo());
-			statement.setString(2, student.getSchool().getCd());
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
 
