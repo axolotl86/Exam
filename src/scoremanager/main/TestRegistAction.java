@@ -26,6 +26,7 @@ public class TestRegistAction extends Action {
 			ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
 			SubjectDao subDao = new SubjectDao();//科目Dao
 
+			boolean done = false;
 			//入学年度リスト
 			// リストを初期化
 			List<Integer> entYearSet = new ArrayList<>();
@@ -55,13 +56,15 @@ public class TestRegistAction extends Action {
 
 			//レスポンス値をセット 6
 			// リクエストに入学年度をセット
-			request.setAttribute("year_set", entYearSet);
+			request.setAttribute("ent_year_set", entYearSet);
 			// リクエストにクラス番号をセット
 			request.setAttribute("class_num_set", cNumList);
 			// リクエストに科目リストをセット
 			request.setAttribute("subject_set", subList);
 			// リクエストに回数をセット
 			request.setAttribute("count_set", countSet);
+			// リクエストに検索したかのチェックをセット
+			request.setAttribute("done", done);
 
 			// jspへフォワード 7
 			request.getRequestDispatcher("test_regist.jsp").forward(request, response);

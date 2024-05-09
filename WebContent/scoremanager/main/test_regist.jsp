@@ -3,8 +3,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/common/base.jsp" >
-<%@ page import ="java.util.ArrayList" %>
-<%@ page import = "java.util.List" %>
 	<c:param name="title">
 		得点管理システム
 	</c:param>
@@ -75,8 +73,8 @@
 			    						</c:otherwise>
 									</c:choose>
 								</option>
-								<c:forEach var="subject" items="${subject_set.getName}">
-									<option value="${subject}">${subject}</option>
+								<c:forEach var="subject" items="${subject_set}">
+									<option value="${subject.name}">${subject.name}</option>
 								</c:forEach>
 							</select>
 						</td>
@@ -100,7 +98,7 @@
 						</td>
 					</tr>
 				</table>
-				<c:if test="${error}">
+				<c:if test="${error1}">
             		<p style="color: yellow;">入学年度とクラスと科目と回数を選択して下さい</p>
         		</c:if>
 
@@ -108,38 +106,39 @@
 
 			</div>
 		</form>
-
-		<form action="TestRegistExcute.action" method="post">
-			<div class="col-4">
-				<h2>科目："${subject }"（"${count }"回）</h2>
-				<table>
-					<tr>
-						<th>入学年度</th>
-						<th>クラス</th>
-						<th>学生番号</th>
-						<th>氏名</th>
-						<th>点数</th>
-					</tr>
-					<c:forEach var="test" items="${test }">
+		<c:if test="${done }">
+			<form action="TestRegistExcute.action" method="post">
+				<div class="col-4">
+					<h2>科目："${subject }"（"${count }"回）</h2>
+					<table>
 						<tr>
-							<td>"${test.ent_year }"	<input type="hidden" name="ent_year" value="${test.ent_year }"></td>
-							<td>"${test.class }" <input type="hidden" name="class_num" value="${test.class }"></td>
-							<td>"${test.no }" <input type="hidden" name="no" value="${test.no }"></td>
-							<td>"${test.name }" <input type="hidden" name="name" value="${test.name }"></td>
-							<td>
-							<input type="text" name="point_${no }" value="${point }">
-							<div>
-								<c:if test="${error2}">
-	            					<p style="color: yellow;">0～100の範囲で入力してください</p>
-	        					</c:if>
-							</div>
-							</td>
+							<th>入学年度</th>
+							<th>クラス</th>
+							<th>学生番号</th>
+							<th>氏名</th>
+							<th>点数</th>
 						</tr>
-					</c:forEach>
-				</table>
-				<button type="submit">登録して終了</button>
-			</div>
-		</form>
+						<c:forEach var="test" items="${test }">
+							<tr>
+								<td>"${test.ent_year }"	<input type="hidden" name="ent_year" value="${test.ent_year }"></td>
+								<td>"${test.class }" <input type="hidden" name="class_num" value="${test.class }"></td>
+								<td>"${test.no }" <input type="hidden" name="no" value="${test.no }"></td>
+								<td>"${test.name }" <input type="hidden" name="name" value="${test.name }"></td>
+								<td>
+								<input type="text" name="point_${no }" value="${point }">
+								<div>
+									<c:if test="${error2}">
+		            					<p style="color: yellow;">0～100の範囲で入力してください</p>
+		        					</c:if>
+								</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<button type="submit">登録して終了</button>
+				</div>
+			</form>
+		</c:if>
 
 		<div class="my-2 text-end px-4">
 			<a href="Menu.action">戻る</a>

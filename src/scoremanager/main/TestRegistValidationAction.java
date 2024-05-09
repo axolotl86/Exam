@@ -51,11 +51,11 @@ public class TestRegistValidationAction extends Action {
 			List<String> cNumList = cNumDao.filter(teacher.getSchool());
 			// ログインユーザーの学校コードをもとに科目一覧を取得
 			List<Subject> subList = subDao.filter(teacher.getSchool());
-			//科目名リスト
-			List<String> subName = new ArrayList<>();
-			for(int i = 0; i < subList.size(); i++){
-				subName.add(subList.get(i).getName());
-			}
+//			//科目名リスト
+//			List<String> subName = new ArrayList<>();
+//			for(int i = 0; i < subList.size(); i++){
+//				subName.add(subList.get(i).getName());
+//			}
 
 			String entYearStr=request.getParameter("f1");
 			String classNum=request.getParameter("f2");
@@ -75,7 +75,7 @@ public class TestRegistValidationAction extends Action {
 				// リクエストにクラス番号をセット
 				request.setAttribute("class_num_set", cNumList);
 				// リクエストに科目リストをセット
-				request.setAttribute("subject_set", subName);
+				request.setAttribute("subject_set", subList);
 				// リクエストに回数をセット
 				request.setAttribute("count_set", countSet);
 
@@ -92,6 +92,7 @@ public class TestRegistValidationAction extends Action {
 	        }else{
 	        	int entYear = Integer.parseInt(entYearStr);
 	        	int count = Integer.parseInt(countStr);
+	        	boolean done = true;
 
 	        	List<Test> testList = testDao.filter(entYear, classNum, subject, count, teacher.getSchool());
 
@@ -101,7 +102,7 @@ public class TestRegistValidationAction extends Action {
 				// リクエストにクラス番号をセット
 				request.setAttribute("class_num_set", cNumList);
 				// リクエストに科目リストをセット
-				request.setAttribute("subject_set", subName);
+				request.setAttribute("subject_set", subList);
 				// リクエストに回数をセット
 				request.setAttribute("count_set", countSet);
 
@@ -111,6 +112,8 @@ public class TestRegistValidationAction extends Action {
 	            request.setAttribute("subject", subject);
 	    		request.setAttribute("count", countStr);
 	    		request.setAttribute("test", testList);
+	    		request.setAttribute("done", done);
+
 
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("test_regist.jsp");
 	            dispatcher.forward(request, response);
