@@ -48,12 +48,12 @@
 				<div class="col-2 text-center">
 					<button class="btn btn-secondary" id="filter-button">絞込み</button>
 				</div>
-				<div class="mt-2 text--warning">${errors.get("f1")} }</div>
+				<div class="mt-2 text--warning">${errors.get("f1")}</div>
 			</div>
 		</form>
 		<c:choose>
 			<c:when test="${students.size()>0}">
-				<div>検索結果:${students.size()}件 }</div>
+				<div>検索結果:${students.size()}件</div>
 				<table class="table table-hover" >
 					<tr>
 						<th>入学年度</th>
