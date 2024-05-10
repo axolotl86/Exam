@@ -11,17 +11,20 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">学生情報登録</h2>
+		<h2 class="h3 mb-3 fw-normalh bg-secondary bg-opacity py-2 px-4" style="background-color:rgba(128, 128, 128, 0.5); text-align: left;">学生情報登録</h2>
 
-		<p>登録が完了しました</p>
-
-		<div class="my-2 text-end px-4">
-			<a href="StudentList.action">学生一覧</a>
-		</div>
-
-		<div class="my-2 text-end px-4">
-			<a href="StudentCreate.action">戻る</a>
-		</div>
+		<p class="green-background">登録が完了しました</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<ul class="nav">
+  			<li class="nav-item"><a href="StudentList.action">学生一覧</a></li>
+  			<li class="nav-item" style="margin-left: 10px;"><a href="StudentCreate.action">戻る</a></li>
+		</ul>
 
 
 

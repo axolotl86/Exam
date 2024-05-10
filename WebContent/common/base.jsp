@@ -16,6 +16,14 @@
 <title>${param.title}</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 ${param.scripts}
+<style>
+  .green-background {
+    background-color: green;
+    color: white; /* テキストを白色に設定 */
+    padding: 20px; /* パディングを追加 */
+    text-align: center; /* テキストを中央に配置 */
+  }
+</style>
 </head>
 <body>
 	<div id="wrapper" class="container">
