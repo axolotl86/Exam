@@ -14,7 +14,7 @@
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">科目情報削除</h2>
 
 
-			<div>「${subject.name}」を削除してもよろしいですか }</div>
+			<div>「${subject.name}」を削除してもよろしいですか</div>
 
 
 			<form action="SubjectDeleteExecuta.action" method="post">
