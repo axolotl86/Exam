@@ -25,7 +25,7 @@ public class SubjectUpdateExcuteAction extends Action {
 		boolean is_attend = false;
 
 		// バリデーションチェック
-				boolean[] errors = {false};
+			boolean[] errors = {false, false, false, false, false};
 		        if (name == null || name.isEmpty()) {
 		            errors[2]=true;
 		        }
@@ -43,6 +43,7 @@ public class SubjectUpdateExcuteAction extends Action {
 		        	School school = new School();
 		    		school = teacher.getSchool();
 
+		    		System.out.println(school.getCd());
 		    		SubjectDao sDao = new SubjectDao();
 
 		    		// 学生インスタンスを初期化
@@ -50,6 +51,7 @@ public class SubjectUpdateExcuteAction extends Action {
 		    		// 学生インスタンスに検索結果をセット
 		    		subject.setCd(cd);
 		    		subject.setName(name);
+		    		subject.setSchool(school);
 		    		// DB更新があった場合、countにはtrueが入る
 		    		count = sDao.save(subject);
 						if(count){
