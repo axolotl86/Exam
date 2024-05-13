@@ -14,7 +14,7 @@
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
 
 
-		<form action="TestRegistValidation.action" method="post">
+		<form action="TestRegistExecute.action" method="post">
 			<div class="col-4">
 				<table>
 					<tr>
@@ -91,7 +91,7 @@
 			    						</c:otherwise>
 									</c:choose>
 								</option>
-								<c:forEach var="count" items="${count_set}">
+								<c:forEach var="count" items="${no_set}">
 									<option value="${count}">${count}</option>
 								</c:forEach>
 							</select>
@@ -106,7 +106,7 @@
 
 			</div>
 		</form>
-		<c:if test="${done }">
+		<c:if test="${done}">
 			<form action="TestRegistExcute.action" method="post">
 				<div class="col-4">
 					<h2>科目："${subject }"（"${count }"回）</h2>
@@ -118,7 +118,7 @@
 							<th>氏名</th>
 							<th>点数</th>
 						</tr>
-						<c:forEach var="test" items="${test }">
+						<c:forEach var="test" items="${testSet}">
 							<tr>
 								<td>"${test.ent_year }"	<input type="hidden" name="ent_year" value="${test.ent_year }"></td>
 								<td>"${test.class }" <input type="hidden" name="class_num" value="${test.class }"></td>
