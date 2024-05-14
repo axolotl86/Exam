@@ -69,6 +69,7 @@
 
 		</section>
 	</c:param>
+</c:import>
 =======
 <%-- 学生一覧JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -143,5 +144,4 @@
 
 		</section>
 	</c:param>
->>>>>>> branch 'master' of https://github.com/axolotl86/Exam.git
 </c:import>
