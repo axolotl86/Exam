@@ -27,9 +27,9 @@ public class SubjectUpdateExcuteAction extends Action {
 		// バリデーションチェック
 				boolean[] errors = {false};
 		        if (name == null || name.isEmpty()) {
-		            errors[2]=true;
+		            errors[0]=true;
 		        }
-		        if (errors[2] || errors[3]) {
+		        if (errors[0]) {
 
 		            // 入力されたデータとエラーメッセージをリクエストにセット
 		        	request.setAttribute("cd", cd);
@@ -50,6 +50,7 @@ public class SubjectUpdateExcuteAction extends Action {
 		    		// 学生インスタンスに検索結果をセット
 		    		subject.setCd(cd);
 		    		subject.setName(name);
+		    		subject.setSchool(school);
 		    		// DB更新があった場合、countにはtrueが入る
 		    		count = sDao.save(subject);
 						if(count){
