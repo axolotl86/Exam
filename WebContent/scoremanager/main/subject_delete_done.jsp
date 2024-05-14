@@ -14,7 +14,9 @@
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">科目情報削除</h2>
 
 
-			<div>削除が完了しました</div>
+			<div class="bg-success bg-opacity-50 p-3 text-center text-dark">
+                削除が完了しました
+            </div>
 
 
 			<div class="my-2 text-end px-4">

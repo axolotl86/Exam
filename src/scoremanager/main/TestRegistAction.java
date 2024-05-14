@@ -11,7 +11,8 @@ import javax.servlet.http.HttpSession;
 import bean.Subject;
 import bean.Teacher;
 import dao.ClassNumDao;
-import dao.SubjectDao;
+import dao.SubjectCdDao;
+import dao.TestNoDao;
 import tool.Action;
 
 public class TestRegistAction extends Action {
@@ -24,7 +25,8 @@ public class TestRegistAction extends Action {
 			LocalDate todaysDate = LocalDate.now();//LocalDateインスタンスを取得
 			int year = todaysDate.getYear();//現在の年を取得
 			ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
-			SubjectDao subDao = new SubjectDao();//科目Dao
+			SubjectCdDao subDao = new SubjectCdDao();//科目Dao
+			TestNoDao testNoDao = new TestNoDao();
 
 			boolean done = false;
 			//入学年度リスト
@@ -37,11 +39,9 @@ public class TestRegistAction extends Action {
 
 			//回数リスト
 			// リストを初期化
-			List<Integer> countSet = new ArrayList<>();
+			List<Integer> noSet = new ArrayList<>();
 			// 1～9までをリストに追加
-			for (int i= 1; i < 10; i++) {
-				countSet.add(i);
-			}
+
 
 			//DBからデータ取得 3
 			// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
@@ -49,6 +49,7 @@ public class TestRegistAction extends Action {
 			// ログインユーザーの学校コードをもとに科目一覧を取得
 			List<Subject> subList = subDao.filter(teacher.getSchool());
 //			//科目名リスト
+			noSet=testNoDao.filter(teacher.getSchool());
 //			List<String> subName = new ArrayList<>();
 //			for(int i = 0; i < subList.size(); i++){
 //				subName.add(subList.get(i).getName());
@@ -62,7 +63,7 @@ public class TestRegistAction extends Action {
 			// リクエストに科目リストをセット
 			request.setAttribute("subject_set", subList);
 			// リクエストに回数をセット
-			request.setAttribute("count_set", countSet);
+			request.setAttribute("no_set", noSet);
 			// リクエストに検索したかのチェックをセット
 			request.setAttribute("done", done);
 
