@@ -46,7 +46,7 @@ public class TestListAction extends Action {
 		request.setAttribute("entYear", entYearSet);
 		request.setAttribute("classNum", cNumSet);
 		request.setAttribute("subject", sCdSet);
-		request.setAttribute("no", tNoSet);
+		request.setAttribute("noset", tNoSet);
 
 		request.getRequestDispatcher("test_list.jsp").forward(request, response);
 
