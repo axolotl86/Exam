@@ -85,11 +85,11 @@
 							<td>${student.no}</td>
 							<td>${student.name}</td>
 							<td>${student.classNum}</td>
-							<c:when  >
-							<td class="text-center">
+							<td></td>
+							<td></td>
 					</c:forEach>
 				</table>
-			</c:when>
+			
 			<c:otherwise>
 				<div>学生情報が存在しませんでした</div>
 			</c:otherwise>
