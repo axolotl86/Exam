@@ -30,12 +30,13 @@ public class TesrListSubjectExecuteAction extends Action {
 
 
 		//データを受け取る
-		String entYear=request.getParameter("entYear");
-		String class_num=request.getParameter("class_num");
+		String entYear=request.getParameter("year");
+		String class_num=request.getParameter("classNum");
 		String no=request.getParameter("no");
 		String subjectcd=request.getParameter("subject");
 		boolean is_attend = false;
 
+		System.out.println(entYear+"\n"+class_num+"\n"+subjectcd);
 		ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
