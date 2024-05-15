@@ -32,9 +32,7 @@ public class TesrListSubjectExecuteAction extends Action {
 		//データを受け取る
 		String entYear=request.getParameter("year");
 		String class_num=request.getParameter("classNum");
-		String no=request.getParameter("no");
 		String subjectcd=request.getParameter("subject");
-		boolean is_attend = false;
 
 		System.out.println(entYear+"\n"+class_num+"\n"+subjectcd);
 		ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
@@ -63,7 +61,6 @@ public class TesrListSubjectExecuteAction extends Action {
         // 入力されたデータとエラーメッセージをリクエストにセット
 		request.setAttribute("entYear", entYear);
 		request.setAttribute("classNum",class_num);
-		request.setAttribute("no", no);
 		request.setAttribute("entYear", entYearSet);
 		request.setAttribute("classNum", list);
 		request.setAttribute("subject", sCdSet);
@@ -77,9 +74,6 @@ public class TesrListSubjectExecuteAction extends Action {
 		        if (class_num == null || class_num.isEmpty()) {
 		            errors[1]=true;
 		        }
-		        if (no == null || no.isEmpty()) {
-		            errors[2]=true;
-		        }
 		        if (subjectcd == null || subjectcd.isEmpty()) {
 		            errors[3]=true;
 		        }
@@ -91,6 +85,7 @@ public class TesrListSubjectExecuteAction extends Action {
 		            RequestDispatcher dispatcher = request.getRequestDispatcher("test_list_subject.jsp");
 		            dispatcher.forward(request, response);
 		        }else{
+		        	System.out.println("aa");
 		        	boolean count = false;
 		        	School school = new School();
 		    		school = teacher.getSchool();
@@ -101,6 +96,7 @@ public class TesrListSubjectExecuteAction extends Action {
 		    		TestListSubjectDao tlsDao = new TestListSubjectDao();
 		    		SubjectDao sDao = new SubjectDao();
 		    		Subject subject = sDao.get(subjectcd, school);
+		    		System.out.println(subject.getName());
 		    		List<TestListSubject> testlistsubject = new ArrayList<TestListSubject>();
 		    		testlistsubject = tlsDao.filter(entYear1, class_num, subject, school);
 
