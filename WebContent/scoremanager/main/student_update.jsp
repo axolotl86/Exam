@@ -48,7 +48,10 @@
 
 			<div>
     			<label class="form-check-label" for="student-isAttend-check">在学中</label>
-    			<input class="form-check-input" type="checkbox" id="student-isAttend-check" name="isAttend" value="t">
+    			<input class="form-check-input" type="checkbox" id="student-isAttend-check" name="isAttend" value="t"
+    				<c:if test="${student.isAttend }">
+    				checked
+    				</c:if>	>
 			</div>
 			<br>
 			<button type="submit" name="end" style="background-color: blue; color: white;">変更</button>
