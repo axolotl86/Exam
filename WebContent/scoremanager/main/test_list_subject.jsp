@@ -67,6 +67,8 @@
 		</form>
 
 
+				<c:choose>
+			<c:when test="${testlistsubject.size()>0}">
 				<div>検索結果:${students.size()}件 }</div>
 				<table class="table table-hover" >
 					<tr>
@@ -97,7 +99,11 @@
 						</tr>
 					</c:forEach>
 				</table>
-
+			</c:when>
+			<c:otherwise>
+				<div>学生情報が存在しませんでした</div>
+			</c:otherwise>
+		</c:choose>
 
 		</section>
 	</c:param>
