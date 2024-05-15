@@ -49,7 +49,7 @@ public class TestListSubjectDao extends Dao {
 		// SQL文の条件
 		String condition = "where t.SUBJECT_CD=? and s.ENT_YEAR=? and s.CLASS_NUM=? and s.SCHOOL=?";
 		// SQL文のソート
-		String order = " order by t.STUDENT_CD asc";
+		String order = " order by t.NO, t.STUDENT_CD asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
