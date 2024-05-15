@@ -13,13 +13,13 @@
 		<section class="me-4">
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
 
-		<p>登録が完了しました</p>
+		<p class="green-background">登録が完了しました</p>
 
-		<div class="my-2 text-end px-4">
+		<div class="my-2 text-start px-4">
 			<a href="TestList.action">成績参照</a>
 		</div>
 
-		<div class="my-2 text-end px-4">
+		<div class="my-2 text-start px-4">
 			<a href="TestRegist.action">戻る</a>
 		</div>
 

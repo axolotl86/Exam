@@ -19,7 +19,7 @@
 
 		<form action="TestRegistExecute.action" method="post">
 			<div class="col-4">
-				<table style="border: 2px solid black; border-collapse: separate; border-radius: 20px; overflow: hidden; width: 400%;">
+				<table style="border: 2px solid black; border-collapse: separate; border-radius: 20px; overflow: hidden; width: 300%;">
 					<tr>
 						<th style="padding: 8px;">入学年度</th>
 						<th style="padding: 8px;">クラス</th>
@@ -121,7 +121,7 @@
 		        			List<String> dataList = new ArrayList<>();
 		    			%>
 						<div class="col-4">
-							<h2>科目："${subject_name}"（"${no_now}"回）</h2>
+							<h2>科目："${subject.name}"（"${no.now}"回）</h2>
 							<table>
 								<tr>
 									<th>入学年度</th>
