@@ -69,7 +69,7 @@
 
 				<c:choose>
 			<c:when test="${testlistsubject.size()>0}">
-				<div>検索結果:${students.size()}件 }</div>
+				<div>検索結果:${testlistsubject.size()}件</div>
 				<table class="table table-hover" >
 					<tr>
 						<th>入学年度</th>
@@ -87,14 +87,14 @@
 							<td>${testlistsubject.studentNo}</td>
 							<td>${testlistsubject.studentName}</td>
 							<c:forEach var="no" items="${noset}">
-							<c:choose>
-							<c:when test="${testlistsubject.points.get(no) }!=null">
-								<td>${testlistsubject.points.get(no)}</td>
-							</c:when>
-							<c:otherwise>
-								<td>-</td>
-							</c:otherwise>
-							</c:choose>
+								<c:choose>
+									<c:when test="${testlistsubject.points[no]!=null}">
+										<td>${testlistsubject.points[no]}</td>
+									</c:when>
+									<c:otherwise>
+										<td>-</td>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</tr>
 					</c:forEach>

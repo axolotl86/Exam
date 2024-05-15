@@ -34,7 +34,6 @@ public class TesrListSubjectExecuteAction extends Action {
 		String class_num=request.getParameter("classNum");
 		String subjectcd=request.getParameter("subject");
 
-		System.out.println(entYear+"\n"+class_num+"\n"+subjectcd);
 		ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
@@ -85,8 +84,6 @@ public class TesrListSubjectExecuteAction extends Action {
 		            RequestDispatcher dispatcher = request.getRequestDispatcher("test_list_subject.jsp");
 		            dispatcher.forward(request, response);
 		        }else{
-		        	System.out.println("aa");
-		        	boolean count = false;
 		        	School school = new School();
 		    		school = teacher.getSchool();
 
@@ -96,14 +93,50 @@ public class TesrListSubjectExecuteAction extends Action {
 		    		TestListSubjectDao tlsDao = new TestListSubjectDao();
 		    		SubjectDao sDao = new SubjectDao();
 		    		Subject subject = sDao.get(subjectcd, school);
-		    		System.out.println(subject.getName());
-		    		List<TestListSubject> testlistsubject = new ArrayList<TestListSubject>();
-		    		testlistsubject = tlsDao.filter(entYear1, class_num, subject, school);
+		    		List<TestListSubject> tlsset = new ArrayList<TestListSubject>();
+		    		tlsset = tlsDao.filter(entYear1, class_num, subject, school);
+		    		List<TestListSubject>testlistsubjectset  = new ArrayList<TestListSubject>();
 
+		    		if(tlsset.size()>0){
 
+		    			String cd1="";
+		    			TestListSubject testlistsubject = new TestListSubject();
+		    			for(int i=0;i<tlsset.size();i++){
+		    				String cd2=tlsset.get(i).getStudentNo();
+		    				if(cd1 == cd2){
+		    					System.out.println(i+"a");
+		    					for(int j=0;j<tNoSet.size();j++){
+		    						if(tlsset.get(i).getPoint(tNoSet.get(j))!=null){
+		    							testlistsubject.putPoint(tlsset.get(i).getPoint(tNoSet.get(j)),tNoSet.get(j));
+		    							System.out.println(testlistsubject.getPoint(tNoSet.get(j)));
+		    							break;
+		    						}
+		    					}
+		    				}else{
+		    					System.out.println(i+"b");
+		    					if(i!=0){
+		    						testlistsubjectset.add(testlistsubject);
+		    					}
+		    					testlistsubject = new TestListSubject();
+		    					cd1=tlsset.get(i).getStudentNo();
+		    					testlistsubject.setEntYear(tlsset.get(i).getEntYear());
+		    					testlistsubject.setStudentNo(tlsset.get(i).getStudentNo());
+		    					testlistsubject.setStudentName(tlsset.get(i).getStudentName());
+		    					testlistsubject.setClassNum(tlsset.get(i).getClassNum());
+		    					testlistsubject.setPoints(tlsset.get(i).getPoints());
+
+		    				}
+	    					if(i==tlsset.size()-1){
+	    						testlistsubjectset.add(testlistsubject);
+
+	    					}
+		    			}
+		    		}else{
+		    			testlistsubjectset = tlsset;
+		    		}
 
 		    		// 学生インスタンスに検索結果をセット
-		    		request.setAttribute("testlistsubject", testlistsubject);
+		    		request.setAttribute("testlistsubject", testlistsubjectset);
 
 
 							// DB更新が完了した場合

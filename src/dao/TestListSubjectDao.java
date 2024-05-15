@@ -30,7 +30,6 @@ public class TestListSubjectDao extends Dao {
 			testLS.setStudentName(rSet.getString("NAME"));
 			testLS.setClassNum(rSet.getString("CLASS_NUM"));
 			testLS.setPoints(map);
-			testLS.putPoint(rSet.getInt("POINT"),rSet.getInt("NO"));
 
 			list.add(testLS);
 		}

@@ -58,7 +58,17 @@ public class TestListSubject implements Serializable {
     }
 
     public void putPoint(int value, int key) {
-        points.put(value, key);
+    	Integer integerValue = value;
+    	Integer integerKey = key;
+        // キーと値をMapに追加し、以前の値を出力
+        Integer previousValue = points.put(integerKey, integerValue);
+        System.out.println("Added: Key = " + integerValue + ", Value = " + integerKey);
+        System.out.println("Previous value for this key was: " + previousValue);
+
+        // Mapの内容を表示
+        for (Map.Entry<Integer, Integer> entry : points.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
     }
 
 }
