@@ -77,22 +77,22 @@
 						<th>学生番号</th>
 						<th>氏名</th>
 						<c:forEach var="no" items="${noset}">
-						<th>${no }回</th>
+						<th>${no}回</th>
 						</c:forEach>
 					</tr>
 					<c:forEach var="testlistsubject" items="${testlistsubject}">
 						<tr>
 							<td>${testlistsubject.entYear}</td>
 							<td>${testlistsubject.classNum}</td>
-							<td>${testlistsubject.no}</td>
-							<td>${testlistsubject.name}</td>
+							<td>${testlistsubject.studentNo}</td>
+							<td>${testlistsubject.studentName}</td>
 							<c:forEach var="no" items="${noset}">
 							<c:choose>
-							<c:when test="${testlistsubject.points[no]!=null }">
-							<td>${testlistsubject.points[no]}</td>
+							<c:when test="${testlistsubject.points.get(no) }!=null">
+								<td>${testlistsubject.points.get(no)}</td>
 							</c:when>
 							<c:otherwise>
-							<td>-</td>
+								<td>-</td>
 							</c:otherwise>
 							</c:choose>
 							</c:forEach>

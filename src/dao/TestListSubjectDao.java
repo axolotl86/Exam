@@ -14,7 +14,7 @@ import bean.Subject;
 import bean.TestListSubject;
 
 public class TestListSubjectDao extends Dao {
-	String basesql = "select s.ENT_YEAR, s.NO, s.NAME, s.CLASS_NUM, t.NO, t.POINT from TEST as t left join STUDENT as s on t.STUDENT_NO=s.NO ";
+	String basesql = "select s.ENT_YEAR, s.NO as STUDENT_NO, s.NAME, s.CLASS_NUM, t.NO, t.POINT from TEST as t left join STUDENT as s on t.STUDENT_NO=s.NO ";
 	private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
 		// リストを初期化
 		List<TestListSubject> list = new ArrayList<>();
@@ -25,8 +25,8 @@ public class TestListSubjectDao extends Dao {
 			map.put(rSet.getInt("NO"), rSet.getInt("POINT"));
 
 			// 成績インスタンスに結果をセット
-			testLS.setEntYear(rSet.getInt("ENTYEAR"));
-			testLS.setStudentNo(rSet.getString("NO"));
+			testLS.setEntYear(rSet.getInt("ENT_YEAR"));
+			testLS.setStudentNo(rSet.getString("STUDENT_NO"));
 			testLS.setStudentName(rSet.getString("NAME"));
 			testLS.setClassNum(rSet.getString("CLASS_NUM"));
 			testLS.setPoints(map);
@@ -47,9 +47,9 @@ public class TestListSubjectDao extends Dao {
 		// リザルトセット
 		ResultSet rSet = null;
 		// SQL文の条件
-		String condition = "where t.SUBJECT_CD=? and s.ENT_YEAR=? and t.CLASS_NUM=? and t.SCHOOL=?";
+		String condition = "where t.SUBJECT_CD=? and s.ENT_YEAR=? and t.CLASS_NUM=? and t.SCHOOL_CD=?";
 		// SQL文のソート
-		String order = " order by t.NO, t.STUDENT_CD asc";
+		String order = " order by t.NO asc, STUDENT_NO asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
