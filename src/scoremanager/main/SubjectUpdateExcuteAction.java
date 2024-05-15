@@ -27,9 +27,9 @@ public class SubjectUpdateExcuteAction extends Action {
 		// バリデーションチェック
 			boolean[] errors = {false, false, false, false, false};
 		        if (name == null || name.isEmpty()) {
-		            errors[2]=true;
+		            errors[0]=true;
 		        }
-		        if (errors[2] || errors[3]) {
+		        if (errors[0]) {
 
 		            // 入力されたデータとエラーメッセージをリクエストにセット
 		        	request.setAttribute("cd", cd);
