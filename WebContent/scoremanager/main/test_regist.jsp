@@ -120,23 +120,25 @@
 		    			<%
 		        			List<String> dataList = new ArrayList<>();
 		    			%>
-						<div class="col-4">
-							<h2>科目："${subject.name}"（"${no.now}"回）</h2>
-							<table>
+
+						<div>科目：${subject.name}:回</div>
+							<table class="table table-hover" >
 								<tr>
 									<th>入学年度</th>
 									<th>クラス</th>
 									<th>学生番号</th>
 									<th>氏名</th>
 									<th>点数</th>
+									<th></th>
+									<th></th>
 								</tr>
 								<c:forEach var="test" items="${test_set}">
 									<tr>
-										<td>"${test.student.entYear }"	<input type="hidden" name="ent_year" value="${test.student.entYear}"></td>
-										<td>"${test.student.classNum }" <input type="hidden" name="class_num" value="${test.student.classNum }"></td>
-										<td>"${test.student.no}" <input type="hidden" name="no" value="${test.student.no}"></td>
-										<td>"${test.student.name}" <input type="hidden" name="name" value="${test.student.name}"></td>
-										<td>"${test.point}" <input type="text" name="point" value="${point}">
+										<td>${test.student.entYear }	<input type="hidden" name="ent_year" value="${test.student.entYear}"></td>
+										<td>${test.student.classNum } <input type="hidden" name="class_num" value="${test.student.classNum }"></td>
+										<td>${test.student.no} <input type="hidden" name="no" value="${test.student.no}"></td>
+										<td>${test.student.name} <input type="hidden" name="name" value="${test.student.name}"></td>
+										<td><input type="text" name="point" value="${test.point}">
 										<div>
 											<c:if test="${error2}">
 				            					<p style="color: yellow;">0～100の範囲で入力してください</p>
@@ -147,7 +149,6 @@
 								</c:forEach>
 							</table>
 							<button type="submit">登録して終了</button>
-						</div>
 					</form>
 				</c:when>
 				<c:otherwise>
