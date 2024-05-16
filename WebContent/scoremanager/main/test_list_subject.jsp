@@ -68,28 +68,38 @@
 
 
 				<c:choose>
-			<c:when test="${students.size()>0}">
-				<div>検索結果:${students.size()}件 }</div>
+			<c:when test="${testlistsubject.size()>0}">
+				<div>検索結果:${testlistsubject.size()}件</div>
 				<table class="table table-hover" >
 					<tr>
 						<th>入学年度</th>
 						<th>クラス</th>
 						<th>学生番号</th>
 						<th>氏名</th>
-						<th>1回</th>
-						<th>2回</th>
+						<c:forEach var="no" items="${noset}">
+						<th>${no}回</th>
+						</c:forEach>
 					</tr>
 					<c:forEach var="testlistsubject" items="${testlistsubject}">
 						<tr>
-							<td>${student.entYear}</td>
-							<td>${student.no}</td>
-							<td>${student.name}</td>
-							<td>${student.classNum}</td>
-							<td></td>
-							<td></td>
+							<td>${testlistsubject.entYear}</td>
+							<td>${testlistsubject.classNum}</td>
+							<td>${testlistsubject.studentNo}</td>
+							<td>${testlistsubject.studentName}</td>
+							<c:forEach var="no" items="${noset}">
+								<c:choose>
+									<c:when test="${testlistsubject.points[no]!=null}">
+										<td>${testlistsubject.points[no]}</td>
+									</c:when>
+									<c:otherwise>
+										<td>-</td>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</tr>
 					</c:forEach>
 				</table>
-			
+			</c:when>
 			<c:otherwise>
 				<div>学生情報が存在しませんでした</div>
 			</c:otherwise>

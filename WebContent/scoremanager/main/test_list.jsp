@@ -41,7 +41,7 @@
 						<option value="0">--------</option>
 						<c:forEach var="subject" items="${subject}">
 							<%-- 現在のnumと選択されていたf3が一致していた場合selectedを追記 --%>
-							<option value="${subject}" <c:if test="${num==f3}">selected</c:if>>${subject.name}</option>
+							<option value="${subject.cd}" <c:if test="${num==f3}">selected</c:if>>${subject.name}</option>
 						</c:forEach>
 					</select>
 				</div>

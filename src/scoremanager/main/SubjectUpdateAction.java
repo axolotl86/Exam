@@ -18,16 +18,13 @@ public class SubjectUpdateAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 
         String cd = request.getParameter("cd");
-        String name = request.getParameter("name");
-
-
-        Subject subject = new Subject();
-        request.setAttribute("cd", cd);
-		request.setAttribute("name", name);
-		System.out.println(name);
-
 
         SubjectDao subjectDao = new SubjectDao();
+        Subject subject = subjectDao.get(cd, teacher.getSchool());
+
+        request.setAttribute("cd", cd);
+		request.setAttribute("name", subject.getName());
+//		System.out.println(name);
 
         request.getRequestDispatcher("subject_update.jsp").forward(request, response);
     }

@@ -26,7 +26,7 @@
 			<br>
 			<div class = "col-4">
 				<label class="form-label" for="student-name-select">氏名</label><br>
-				<input type="text" name="name" value="${student.name}" style="width: 800px;">
+				<input type="text" name="name" value="${student.name}" style="width: 800px;"required>
 				<c:if test="${errors[2]}">
             		<p style="color: yellow;">氏名を入力して下さい</p>
         		</c:if>
@@ -48,7 +48,10 @@
 
 			<div>
     			<label class="form-check-label" for="student-isAttend-check">在学中</label>
-    			<input class="form-check-input" type="checkbox" id="student-isAttend-check" name="isAttend" value="t">
+    			<input class="form-check-input" type="checkbox" id="student-isAttend-check" name="isAttend" value="t"
+    				<c:if test="${student.isAttend }">
+    				checked
+    				</c:if>	>
 			</div>
 			<br>
 			<button type="submit" name="end" style="background-color: blue; color: white;">変更</button>

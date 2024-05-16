@@ -20,7 +20,7 @@
 				</div>
 		<div class = "col-4">
 			<label class="form-label" for="subject-name-select">科目名</label>
-			<input type="text" name="name" value="${name }">
+			<input type="text" maxlength="20" name="name" value="${name }" required>
 		</div>
 		<button type="submit" name="end" value=40>変更</button>
 
