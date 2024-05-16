@@ -11,14 +11,14 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績一覧(科目)</h2>
-		<form method="get">
+		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
+		 <form action="TesrListSubjectExecute.action" method="post">
 			<div class="row vorder mx-3 mb-3 py-2 align-items-center rounded" id="filter">
 				<div class="col-4">
 					<label class="form-label" for="student-f1-select">入学年度</label>
 					<select class="form-select " id="student-f1-select" name="year">
 						<option value="0">--------</option>
-						<c:forEach var="year" items="${entYear }">
+						<c:forEach var="year" items="${entYear}">
 							<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
 							<option value="${year}" <c:if test="${year==f1}">selected</c:if>>${year}</option>
 						</c:forEach>
@@ -26,9 +26,9 @@
 				</div>
 				<div class="col-4">
 					<label class="form-label" for="student-f2-select">クラス</label>
-					<select class="form-select " id="student-f2-select" name="classnum">
+					<select class="form-select " id="student-f2-select" name="classNum">
 						<option value="0">--------</option>
-						<c:forEach var="num" items="${classNum }">
+						<c:forEach var="num" items="${classNum}">
 							<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
 							<option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
 						</c:forEach>
@@ -36,16 +36,16 @@
 				</div>
 				<div class="col-4">
 					<label class="form-label" for="student-f3-select">科目</label>
-					<select class="form-select " id="student-f2-select" name="subjectname">
+					<select class="form-select " id="student-f3-select" name="subject">
 						<option value="0">--------</option>
-						<c:forEach var="subject" items="${subject }">
+						<c:forEach var="subject" items="${subject}">
 							<%-- 現在のnumと選択されていたf3が一致していた場合selectedを追記 --%>
-							<option value="${subject.name}" <c:if test="${num==f3}">selected</c:if>>${subject.name}</option>
+							<option value="${subject.cd}" <c:if test="${num==f3}">selected</c:if>>${subject.name}</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="col-2 text-center">
-					<button class="btn btn-secondary" id="filter-button">検索</button>
+					<button type="submit" class="btn btn-secondary" id="filter-button">検索</button>
 				</div>
 				<div class="mt-2 text--warning">${error.get("f1")}</div>
 			</div>
