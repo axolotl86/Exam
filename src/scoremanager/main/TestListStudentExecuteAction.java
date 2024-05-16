@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -80,7 +81,11 @@ public class TestListStudentExecuteAction extends Action {
                 e.printStackTrace();
             }
         } else {
-            // 学生番号が提供されていない場合の処理
+        	String errorMessage = "学生番号を入力してください";
+        	request.setAttribute("errorMessage", errorMessage);
+            // 入力画面にフォワード
+            RequestDispatcher dispatcher = request.getRequestDispatcher("test_list.jsp");
+            dispatcher.forward(request, response);
         }
 	}
 }
