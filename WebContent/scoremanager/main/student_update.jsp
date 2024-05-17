@@ -11,7 +11,7 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">学生情報変更</h2>
+		<h2 class="h3 mb-3 fw-normalh bg-secondary bg-opacity py-2 px-4" style="background-color:rgba(128, 128, 128, 0.5); text-align: left;">学生情報変更</h2>
 
 		<form action="StudentUpdateExcute.action" method="post">
 			<div class="col-4">
@@ -26,7 +26,7 @@
 			<br>
 			<div class = "col-4">
 				<label class="form-label" for="student-name-select">氏名</label><br>
-				<input type="text" name="name" value="${student.name}" style="width: 800px;"required>
+				<input type="text" name="name" value="${student.name}" style="width: 500px;"required>
 				<c:if test="${errors[2]}">
             		<p style="color: yellow;">氏名を入力して下さい</p>
         		</c:if>
@@ -34,7 +34,7 @@
 			<br>
 			<div class="col-4">
 				<label class="form-label" for="student-class_num-select">クラス</label>
-				<select class="form-select" id="student-class_num-select" name="class_num" style="width: 800px;">
+				<select class="form-select" id="student-class_num-select" name="class_num" style="width: 500px;">
     				<option value="${student.classNum}">${student.classNum}</option>
     				<c:forEach var="num" items="${class_num_set}">
         				<option value="${num}">${num}</option>
