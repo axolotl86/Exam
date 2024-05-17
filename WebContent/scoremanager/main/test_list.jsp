@@ -18,32 +18,41 @@
 				<div class="col-4">
 					<label class="form-label" for="student-f1-select">入学年度</label>
 					<select class="form-select " id="student-f1-select" name="year">
-						<option value="0">--------</option>
+						<option value="">--------</option>
 						<c:forEach var="year" items="${entYear}">
 							<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
 							<option value="${year}" <c:if test="${year==f1}">selected</c:if>>${year}</option>
 						</c:forEach>
 					</select>
+					<c:if test="${errors[0]}">
+						<p style="color: yellow;">入学年度を指定して下さい</p>
+					</c:if>
 				</div>
 				<div class="col-4">
 					<label class="form-label" for="student-f2-select">クラス</label>
 					<select class="form-select " id="student-f2-select" name="classNum">
-						<option value="0">--------</option>
+						<option value="">--------</option>
 						<c:forEach var="num" items="${classNum}">
 							<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
 							<option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
 						</c:forEach>
 					</select>
+					<c:if test="${errors[1]}">
+						<p style="color: yellow;">クラスを指定して下さい</p>
+					</c:if>
 				</div>
 				<div class="col-4">
 					<label class="form-label" for="student-f3-select">科目</label>
 					<select class="form-select " id="student-f3-select" name="subject">
-						<option value="0">--------</option>
+						<option value="">--------</option>
 						<c:forEach var="subject" items="${subject}">
 							<%-- 現在のnumと選択されていたf3が一致していた場合selectedを追記 --%>
 							<option value="${subject.cd}" <c:if test="${num==f3}">selected</c:if>>${subject.name}</option>
 						</c:forEach>
 					</select>
+					<c:if test="${errors[2]}">
+						<p style="color: yellow;">科目を指定して下さい</p>
+					</c:if>
 				</div>
 				<div class="col-2 text-center">
 					<button type="submit" class="btn btn-secondary" id="filter-button">検索</button>
@@ -57,16 +66,16 @@
 			<div class="mb-3">
 			<label class="form-label" for="student-name-select">学生番号</label>
 			<input type="text" class="form-control" name="student_no">
-			</div>
-			</div>
-			<div class="col-md-4">
-			<div class="mb-3">
 			<label class="invisible">検索</label> <!-- ボタンの高さを合わせるために空のラベルを使用 -->
 			<button type="submit" class="btn btn-secondary" >検索</button>
+
+			<c:if test="${not empty errorMessage}">
+				<p style="color: yellow;">${errorMessage}</p>
+			</c:if>
+
 			</div>
 			</div>
 		</form>
-
 		</section>
 	</c:param>
 </c:import>
