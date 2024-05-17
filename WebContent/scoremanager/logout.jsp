@@ -15,7 +15,7 @@
 		<p class="green-background">ログアウトしました</p>
 
 		<div class="my-2 text-start px-4">
-			<a href="Login.Action">ログイン</a>
+			<a href="Login.action">ログイン</a>
 		</div>
 
 
