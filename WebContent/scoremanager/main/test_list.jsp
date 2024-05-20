@@ -52,7 +52,7 @@
 							<option value="${subject.cd}">${subject.name}</option>
 						</c:forEach>
 					</select>
-					<c:if test="${errors[2]}">
+					<c:if test="${errors[3]}">
 						<p style="color: yellow;">科目を指定して下さい</p>
 					</c:if>
 				</div>
