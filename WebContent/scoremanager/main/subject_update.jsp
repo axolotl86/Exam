@@ -10,23 +10,25 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-normalh bg-secondary bg-opacity py-2 px-4" style="background-color:rgba(128, 128, 128, 0.5); text-align: left;">科目情報変更</h2>
+		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">科目情報変更</h2>
 
 		<form action="SubjectUpdateExcute.action" method="post">
 				<div class="col-4">
-					<label class="form-label" for="subject-cd">科目コード</label><br>
-					<input type="text" name="cd" value="${cd}" readonly style="border: none;">
+					<label class="form-label" for="subject-cd">科目コード</label>
+					<input type="hidden" id="subject-cd-select" name="cd" value="${cd }">
+					<p>${cd }</p>
 				</div>
 		<div class = "col-4">
 			<label class="form-label" for="subject-name-select">科目名</label>
-			<input type="text" maxlength="20" name="name" value="${name }" required style="border-radius: 5px; width: 500px;">
+			<input type="text" maxlength="20" name="name" value="${name }" required>
 		</div>
-		<br>
-		<button type="submit" name="end" value=40 style="background-color: blue; color: white; border-radius: 5px;">変更</button>
+		<button type="submit" name="end" value=40>変更</button>
 
 		</form>
-		<br>
-		<a href="SubjectList.action">戻る</a>
+
+		<div class="my-2 text-end px-4">
+			<a href="SubjectList.action">戻る</a>
+		</div>
 
 
 		</section>

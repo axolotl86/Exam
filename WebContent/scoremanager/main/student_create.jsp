@@ -50,7 +50,7 @@
 				</c:choose>
 			<div class = "col-4">
 				<label class="form-label" for="student-name-select">氏名</label>
-        			<input type="text" maxlength="10" name="name" value="<c:out value='${name}' />" required style="border-radius: 10px;">
+        			<input type="text" maxlength="10" name="name" value="<c:out value="${name}" />" required>
 			</div>
 				<c:if test="${errors[2]}">
             		<p style="color: yellow;">氏名を入力して下さい</p>
