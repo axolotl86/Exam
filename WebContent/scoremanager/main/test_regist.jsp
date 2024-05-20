@@ -4,6 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="bean.Test" %>
 <c:import url="/common/base.jsp" >
 
 	<c:param name="title">
@@ -25,6 +26,7 @@
 						<th style="padding: 8px;">クラス</th>
 						<th style="padding: 8px;">科目</th>
 						<th style="padding: 8px;">回数</th>
+						<td rowspan="2"><button type="submit"style="background-color: blue; color: white; border-radius: 4px;">検索</button></td>
 					</tr>
 					<tr>
 						<td>
@@ -84,14 +86,14 @@
 						</td>
 						<td>
 							<!-- 回数 -->
-							<select class="form-select " id="select" name="no">
-								<option value="${count}">
+							<select class="form-select " id="select" name="num">
+								<option value="${no}">
 									<c:choose>
-			    						<c:when test="${empty count}">
+			    						<c:when test="${empty no}">
 											--------
 			    						</c:when>
 			    						<c:otherwise>
-											${count }
+											${no}
 			    						</c:otherwise>
 									</c:choose>
 								</option>
@@ -100,6 +102,7 @@
 								</c:forEach>
 							</select>
 						</td>
+
 					</tr>
 				</table>
 				<c:if test="${error1}">
@@ -107,7 +110,7 @@
         		</c:if>
         		<input type="hidden" name="flag" value="t">
 
-        		<button type="submit">検索</button>
+
 
 			</div>
 		</form>
@@ -116,12 +119,10 @@
 			<c:choose>
 			    <c:when test="${test_set.size()>0}">
 					<form action="TestRegistExecute.action" method="post">
-					    <%-- リストを作成 --%>
-		    			<%
-		        			List<String> dataList = new ArrayList<>();
-		    			%>
-
-						<div>科目：${subject.name}:回</div>
+					<%
+						List<Test> tset = new ArrayList<Test>();
+					%>
+						<div>科目：${subject.name}:${no}回</div>
 							<table class="table table-hover" >
 								<tr>
 									<th>入学年度</th>
@@ -134,11 +135,12 @@
 								</tr>
 								<c:forEach var="test" items="${test_set}">
 									<tr>
-										<td>${test.student.entYear }	<input type="hidden" name="ent_year" value="${test.student.entYear}"></td>
-										<td>${test.student.classNum } <input type="hidden" name="class_num" value="${test.student.classNum }"></td>
-										<td>${test.student.no} <input type="hidden" name="no" value="${test.student.no}"></td>
-										<td>${test.student.name} <input type="hidden" name="name" value="${test.student.name}"></td>
-										<td><input type="text" name="point" value="${test.point}">
+
+										<td>${test.student.entYear }	<input type="hidden" name="EntYear" value="${test.student.entYear}"></td>
+										<td>${test.student.classNum } <input type="hidden" name="ClassNum" value="${test.student.classNum }"></td>
+										<td>${test.student.no} <input type="hidden" name="No" value="${test.student.no}"></td>
+										<td>${test.student.name} <input type="hidden" name="Name" value="${test.student.name}"></td>
+										<td><input type="text" name="Point" value="${test.point}">
 										<div>
 											<c:if test="${error2}">
 				            					<p style="color: yellow;">0～100の範囲で入力してください</p>

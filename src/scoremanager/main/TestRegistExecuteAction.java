@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.School;
+import bean.Student;
 import bean.Subject;
 import bean.Teacher;
 import bean.Test;
 import dao.ClassNumDao;
-import dao.StudentDao;
 import dao.SubjectCdDao;
-import dao.SubjectDao;
 import dao.TestDao;
 import dao.TestNoDao;
 import tool.Action;
@@ -31,27 +30,23 @@ public class TestRegistExecuteAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 
 		String flag=request.getParameter("flag");
+		// test_regist.jspからデータを受け取る
+		String entYearStr=request.getParameter("ent_year");
+		String classNum=request.getParameter("class_num");
+		String subjectCd=request.getParameter("subject_cd");
+		String subjectName=request.getParameter("subject_name");
+		String noStr=request.getParameter("num");
+
+    	School school = new School();
+    	school = teacher.getSchool();
+    	Subject subject = new Subject();
+    	subject.setCd(subjectCd);
+    	subject.setName(subjectName);
+    	subject.setSchool(school);
+
+    	// 成績インスタンスを初期化
+    	TestDao tDao = new TestDao();
 		if(flag!=null){
-			System.out.println("aa");
-			StudentDao stuDao = new StudentDao();//クラス番号Daoを初期化
-			SubjectDao subDao = new SubjectDao();//科目Dao
-			TestDao tesDao = new TestDao();//科目Dao
-
-			// test_regist.jspからデータを受け取る
-			String entYearStr=request.getParameter("ent_year");
-			String classNum=request.getParameter("class_num");
-			String subjectCd=request.getParameter("subject_cd");
-			String subjectName=request.getParameter("subject_name");
-			String noStr=request.getParameter("no");
-
-	    	School school = new School();
-	    	school = teacher.getSchool();
-	    	Subject subject = new Subject();
-	    	subject.setCd(subjectCd);
-	    	subject.setName(subjectName);
-	    	subject.setSchool(school);
-	    	System.out.println(subjectCd);
-
 			LocalDate todaysDate = LocalDate.now();//LocalDateインスタンスを取得
 			int year = todaysDate.getYear();//現在の年を取得
 			ClassNumDao cNumDao = new ClassNumDao();//クラス番号Daoを初期化
@@ -124,14 +119,11 @@ public class TestRegistExecuteAction extends Action {
 	            dispatcher.forward(request, response);
 	        }else{
 	        	done=true;
-	        	System.out.println("bb");
-	        	done=true;
 	        	int entYear = Integer.parseInt(entYearStr);
 	        	int no = Integer.parseInt(noStr);
 
 
-	        	// 成績インスタンスを初期化
-	        	TestDao tDao = new TestDao();
+
 	        	// 成績インスタンスに検索結果をセット
 	        	List<Test>testSet=tDao.filter(entYear, classNum, subject, no, school);
 
@@ -143,7 +135,38 @@ public class TestRegistExecuteAction extends Action {
 	        	request.getRequestDispatcher("test_regist.jsp").forward(request, response);
 	        }
 		}else{
-			request.getRequestDispatcher("test_regist_done.jsp").forward(request, response);
+	        String[] entYears = request.getParameterValues("EntYear");
+	        String[] classNums = request.getParameterValues("ClassNum");
+	        String[] nos = request.getParameterValues("No");
+	        String[] names = request.getParameterValues("Name");
+	        String[] points = request.getParameterValues("Point");
+
+	        System.out.println(noStr);
+	        // 受け取ったパラメータをリストに変換する
+	        List<Test> testList = new ArrayList<>();
+	        for (int i = 0; i < entYears.length; i++) {
+	            Test test = new Test();
+	            Student student = new Student();
+	            student.setEntYear(Integer.parseInt(entYears[i]));
+	            student.setClassNum(classNums[i]);
+	            student.setNo(nos[i]);
+	            student.setname(names[i]);
+	            test.setStudent(student);
+	            test.setClassNum(classNums[i]);
+	            test.setSubject(subject);
+	            test.setSchool(school);
+	            test.setNo(Integer.parseInt(noStr));
+	            test.setPoint(Integer.parseInt(points[i]));
+	            testList.add(test);
+	        }
+
+	        boolean j= tDao.save(testList);
+
+	        if(j){
+	        	request.getRequestDispatcher("test_regist_done.jsp").forward(request, response);
+	        }else{
+	        	request.getRequestDispatcher("test_regist.jsp").forward(request, response);
+	        }
 		}
 	}
 
