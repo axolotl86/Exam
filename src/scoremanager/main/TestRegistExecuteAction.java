@@ -123,6 +123,7 @@ public class TestRegistExecuteAction extends Action {
 
 	            // 入力されたデータとエラーメッセージをリクエストにセット
 	        	request.setAttribute("done", done);
+	        	request.setAttribute("errors", errors);
 
 	            // 入力画面にフォワード
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("test_regist.jsp");
@@ -141,6 +142,7 @@ public class TestRegistExecuteAction extends Action {
 	    		request.setAttribute("done", done);
 
 	        	request.setAttribute("test_set", testSet);
+
 
 	        	request.getRequestDispatcher("test_regist.jsp").forward(request, response);
 	        }

@@ -41,6 +41,7 @@
 									<option value="${ent_year}" style="padding: 8px;">${ent_year}</option>
 								</c:forEach>
 							</select>
+
 						</td>
 						<td>
 							<!-- クラス番号 -->
@@ -59,6 +60,7 @@
 									<option value="${class_num}" style="padding: 8px;">${class_num}</option>
 								</c:forEach>
 							</select>
+
 						</td>
 						<td>
 							<!-- 科目名 -->
@@ -78,6 +80,7 @@
 									<input type="hidden" name="subject_cd" value="${subject.cd }">
 								</c:forEach>
 							</select>
+
 						</td>
 						<td>
 							<!-- 回数 -->
@@ -96,7 +99,22 @@
 									<option value="${count}" style="padding: 8px;">${count}</option>
 								</c:forEach>
 							</select>
+
 						</td>
+					</tr>
+					<tr>
+						<td style="color: yellow;"><c:if test="${errors[0]}">
+				            	入学年度を選択して下さい
+				        	</c:if></td>
+				        <td><c:if test="${errors[1]}">
+				            	<p style="color: yellow;">クラスを選択して下さい</p>
+				        	</c:if></td>
+				        <td><c:if test="${errors[2]}">
+				            	<p style="color: yellow;">科目を選択して下さい</p>
+				        	</c:if></td>
+				        <td><c:if test="${errors[3]}">
+				            	<p style="color: yellow;">回数を選択して下さい</p>
+				        	</c:if></td>
 					</tr>
 				</table>
 				<c:if test="${error1}">
