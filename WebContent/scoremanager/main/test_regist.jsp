@@ -86,14 +86,14 @@
 						</td>
 						<td>
 							<!-- 回数 -->
-							<select class="form-select " id="select" name="num">
-								<option value="${no}">
+							<select class="form-select " id="select" name="nums">
+								<option value="${num}">
 									<c:choose>
-			    						<c:when test="${empty no}">
+			    						<c:when test="${empty num}">
 											--------
 			    						</c:when>
 			    						<c:otherwise>
-											${no}
+											${num}
 			    						</c:otherwise>
 									</c:choose>
 								</option>
@@ -122,7 +122,7 @@
 					<%
 						List<Test> tset = new ArrayList<Test>();
 					%>
-						<div>科目：${subject.name}:${no}回</div>
+						<div>科目：${subject.name}:${num}回</div>
 							<table class="table table-hover" >
 								<tr>
 									<th>入学年度</th>
@@ -130,8 +130,6 @@
 									<th>学生番号</th>
 									<th>氏名</th>
 									<th>点数</th>
-									<th></th>
-									<th></th>
 								</tr>
 								<c:forEach var="test" items="${test_set}">
 									<tr>
@@ -150,6 +148,11 @@
 									</tr>
 								</c:forEach>
 							</table>
+							<input type="hidden" name="ent_year" value="${ent_year}">
+							<input type="hidden" name="class_num" value="${class_num}">
+							<input type="hidden" name="subject_cd" value="${subject.cd }">
+							<input type="hidden" name="subject_name" value="${subject.name }">
+							<input type="hidden" name="nums" value="${num}">
 							<button type="submit">登録して終了</button>
 					</form>
 				</c:when>
