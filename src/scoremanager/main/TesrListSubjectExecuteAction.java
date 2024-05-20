@@ -78,9 +78,10 @@ public class TesrListSubjectExecuteAction extends Action {
 		        }
 		        if (errors[0] || errors[1] || errors[2] || errors[3]) {
 
-		        	request.setAttribute("errors", errors);
+
+
 		            // 入力画面にフォワード
-		            RequestDispatcher dispatcher = request.getRequestDispatcher("test_list.jsp");
+		            RequestDispatcher dispatcher = request.getRequestDispatcher("test_list_subject.jsp");
 		            dispatcher.forward(request, response);
 		        }else{
 		        	School school = new School();

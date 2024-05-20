@@ -82,25 +82,34 @@
 		</form>
 		</div>
 
-
-				<table class="table table-hover" >
-					<tr>
-						<th>科目名</th>
-						<th>科目コード</th>
-						<th>回数</th>
-						<th>点数</th>
-					</tr>
-					<c:forEach var="test" items="${testList}">
-						<tr>
-							<td>${test.subjectName}</td>
-							<td>${test.subjectCd}</td>
-							<td>${test.num}</td>
-							<td>${test.point}</td>
-						</tr>
-					</c:forEach>
-				</table>
-
-
+		<c:choose>
+                <c:when test="${testList.size() > 0}">
+                    <div>氏名: ${student.name}(${student.no})</div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>科目名</th>
+                                <th>科目コード</th>
+                                <th>回数</th>
+                                <th>点数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="test" items="${testList}">
+                                <tr>
+                                    <td>${test.subjectName}</td>
+                                    <td>${test.subjectCd}</td>
+                                    <td>${test.num}</td>
+                                    <td>${test.point}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <div>検索結果が見つかりませんでした。</div>
+                </c:otherwise>
+            </c:choose>
 		</section>
 	</c:param>
 </c:import>
