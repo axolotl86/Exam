@@ -107,7 +107,8 @@
                     </table>
                 </c:when>
                 <c:otherwise>
-                    <div>検索結果が見つかりませんでした。</div>
+                	<div>氏名: ${student.name}(${student.no})</div>
+                    <div>成績情報が存在しませんでした</div>
                 </c:otherwise>
             </c:choose>
 		</section>
