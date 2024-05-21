@@ -9,7 +9,7 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績参照</h2>
+		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績一覧(学生)</h2>
 
 		<div class="border rounded p-4 style="border-width: 3px;">
 		 <form action="TesrListSubjectExecute.action" method="post">
