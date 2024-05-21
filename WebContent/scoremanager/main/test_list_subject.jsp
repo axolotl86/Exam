@@ -9,7 +9,7 @@
 
 	<c:param name="content">
 		<section class="me-4">
-		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績管理</h2>
+		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity py-2 px-4">成績参照</h2>
 
 		<div class="border rounded p-4 style="border-width: 3px;">
 		 <form action="TesrListSubjectExecute.action" method="post">
@@ -26,7 +26,7 @@
 						</c:forEach>
 					</select>
 					<c:if test="${errors[0]}">
-						<p style="color: yellow;">入学年度を指定して下さい</p>
+						<p style="color: #ffd700;">入学年度を指定して下さい</p>
 					</c:if>
 				</div>
 				<div class="col">
@@ -38,7 +38,7 @@
 						</c:forEach>
 					</select>
 					<c:if test="${errors[1]}">
-						<p style="color: yellow;">クラスを指定して下さい</p>
+						<p style="color: #ffd700;">クラスを指定して下さい</p>
 					</c:if>
 				</div>
 				<div class="col">
@@ -50,7 +50,7 @@
 						</c:forEach>
 					</select>
 					<c:if test="${errors[2]}">
-						<p style="color: yellow;">科目を指定して下さい</p>
+						<p style="color: #ffd700;">科目を指定して下さい</p>
 					</c:if>
 				</div>
 				<div class="col-2 text-center">
@@ -76,7 +76,7 @@
 		</div>
 
 				<c:if test="${not empty errorMessage}">
-					<p style="color: yellow;">${errorMessage}</p>
+					<p style="color: #ffd700;">${errorMessage}</p>
 				</c:if>
 
 		</form>
